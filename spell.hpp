@@ -7,20 +7,40 @@
 #include <cassert>
 
 enum TimeUnit {
-    ACTION = 0,
-    REACTION = 1,
-    BONUS_ACTION = 2,
-    SECONDS = 3,
-    MINUTES = 4,
-    HOURS = 5,
-    DAYS = 6
+    INSTANTANEOUS = 0,
+    ACTION = 1,
+    REACTION = 2,
+    BONUS_ACTION = 3,
+    SECONDS = 4,
+    MINUTES = 5,
+    HOURS = 6
 };
 
 enum RangeUnit {
     TARGET = 0,
     CONE = 1,
-    RADIUS = 2,
-    LINE = 3
+    SPHERE = 2,
+    LINE = 3,
+    CUBE = 4,
+    CYLLINDER = 5
+};
+
+enum School {
+    ABJURATION = 0,
+    CONJURATION = 1,
+    DIVINATION = 2,
+    ENCHANTMENT = 3,
+    EVOCATION = 4,
+    ILLUSION = 5,
+    NECROMANCY = 6,
+    TRANSMUTATION = 7
+};
+
+enum TargetUnit {
+    SELF = 0,
+    TOUCH = 1,
+    CREATURE = 2,
+    OBJECT = 3
 };
 
 class Spell {
@@ -29,11 +49,10 @@ public:
 private:
     std::string name;
     std::string description;
-    std::string school; // Necromancy, Conjuration, etc.
-    int base_level; // 0 = cantrip, 1 = first level, etc.
+    School school;
+    int level; // 0 = cantrip, 1 = first level, etc.
     std::pair<int, TimeUnit> cast_time; // 1 Action, 10 Minutes, etc.
-    bool is_touch;
-    bool is_self;
+    std::pair<int, TargetUnit> target; // 1 self, 1 touch, 3 creatures, etc.
     std::pair<int, RangeUnit> range; // 30 foot cone, 15 foot line, etc.
     bool is_concentration;
     bool has_ritual;
@@ -44,8 +63,24 @@ private:
     std::pair<int, int> dice; // first = number, second = die
 };
 
+std::ostream & operator<<(std::ostream &os, const Spell &spell);
+
 std::ostream & operator<<(std::ostream &os, TimeUnit unit);
 
 std::ostream & operator<<(std::ostream &os, RangeUnit unit);
+
+std::ostream & operator<<(std::ostream &os, School school);
+
+std::ostream & operator<<(std::ostream &os, TargetUnit unit);
+
+std::istream & operator>>(std::istream &is, Spell spell);
+
+std::istream & operator>>(std::istream &is, TimeUnit unit);
+
+std::istream & operator>>(std::istream &is, RangeUnit unit);
+
+std::istream & operator>>(std::istream &is, School school);
+
+std::istream & operator>>(std::istream &is, TargetUnit unit);
 
 #endif //SPELL_HPP
