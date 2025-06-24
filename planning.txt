@@ -1,0 +1,31 @@
+Overall design goal:
+    Create a text-based D&D character manager that allows users to create new
+    characters without having to pore over a game manual; track character 
+    resources such as abilities, spells, inventory, and backstory; and
+    simulate gameplay events like ability checks, saving throws, combat,
+    spellcasting, and leveling up.
+
+Organization:
+    Spell class
+
+    Item/Equipment class
+
+        Weapon class
+
+        Armor class
+
+    Feature/Trait class
+
+    Race class
+
+    Background class
+
+    Class class (might have to name HeroClass or PlayerClass or something)
+
+    Effect class
+
+    PlayerCharacter
+    - Manages objects of every other type, along with other info (look to a 
+    character sheet for reference)
+    - Functions for leveling up, simulating combat, modifying inventory, etc.
+
