@@ -14,6 +14,8 @@ Organization:
 
         Armor class
 
+        Mount class
+
     Feature/Trait class
 
     Race class
@@ -24,7 +26,7 @@ Organization:
 
     Effect class
 
-    PlayerCharacter
+    Character class
     - Manages objects of every other type, along with other info (look to a 
     character sheet for reference)
     - Functions for leveling up, simulating combat, modifying inventory, etc.
