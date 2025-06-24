@@ -7,7 +7,7 @@
 #include <cassert>
 
 #include "enums.hpp"
-#include "dice.hpp"
+#include "roll.hpp"
 
 class Item {
 public:
@@ -15,8 +15,8 @@ public:
 private:
     std::string name;
     std::string description;
-    std::pair<double, char> cost; // {2, 'g'} = 2 gp
-    double weight; // pounds/lbs
+    std::pair<int, Currency> cost; // {2, 3} = 2 gp, see enums.hpp
+    int weight; // pounds/lbs
     bool is_magic;
 };
 
@@ -24,8 +24,8 @@ class Weapon : public Item {
 public:
 
 private:
-    char weapon_type; // 's' = simple, 'm' = martial
-    Dice damage;
+    WeaponType weapon_type;
+    Roll damage;
     DamageType damage_type;
     std::pair<int, int> range; // ex: 20/60 for handaxe
     bool is_light;
@@ -33,7 +33,7 @@ private:
     bool is_finesse;
     bool is_thrown;
     bool is_two_handed;
-    std::pair<bool, Dice> versatile; // first: is versatile, second: new damage
+    std::pair<bool, Roll> versatile; // first: is versatile, second: new damage
     bool is_ammunition;
     bool is_loading;
     bool is_reach;
@@ -43,7 +43,7 @@ class Armor : public Item {
 public:
 
 private:
-    char armor_type; // 'l' = light, 'm' = medium, etc.
+    ArmorType armor_type;
     int armor_class;
     std::pair<Ability, int> ac_modifier;
     int min_strength;

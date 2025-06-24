@@ -87,4 +87,26 @@ enum DamageType {
     THUNDER = 13
 };
 
+enum Currency {
+    COPPER = 0,
+    SILVER = 1,
+    ELECTRUM = 2,
+    GOLD = 3,
+    PLATINUM = 4
+};
+
+enum WeaponType {
+    SIMPLE_MELEE = 0,
+    SIMPLE_RANGED = 1,
+    MARTIAL_MELEE = 2,
+    MARTIAL_RANGED = 3
+};
+
+enum ArmorType {
+    LIGHT = 0,
+    MEDIUM = 1,
+    HEAVY = 2,
+    SHIELD = 3
+};
+
 #endif // ENUMS_HPP

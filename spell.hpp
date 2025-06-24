@@ -7,7 +7,7 @@
 #include <cassert>
 
 #include "enums.hpp"
-#include "dice.hpp"
+#include "roll.hpp"
 
 class Spell {
 public:
@@ -26,7 +26,7 @@ private:
     bool is_verbal;
     bool is_semantic;
     bool is_material;
-    Dice dice;
+    Roll roll;
     DamageType damage_type;
 };
 
