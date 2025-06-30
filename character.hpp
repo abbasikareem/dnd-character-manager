@@ -51,13 +51,14 @@ private:
     std::set<const Feature*> features;
     std::set<std::string> languages;
     bool armor_proficiencies[4];
-    bool weapon_proficiencies[4];
+    bool weapon_class_proficiencies[4];
+    std::set<std::string> weapon_specific_proficiencies;
     std::set<std::string> tool_proficiencies;
 
     // ABILITY SCORES
-    Ability abilities[6]; // Ordered as in enum.hpp
-    Skill skills[18]; // Ordered as in enum.hpp
-    Ability saving_throws[6]; // Ordered as in enum.hpp
+    bool abilities[6]; // Ordered as in enum.hpp
+    bool skills[18]; // Ordered as in enum.hpp
+    bool saving_throws[6]; // Ordered as in enum.hpp
     int proficiency_bonus;
     bool inspiration;
     int passive_wisdom;
@@ -70,6 +71,7 @@ private:
     std::tuple<Roll, int, int> hit_dice; // <Roll, current, max>
     std::pair<int, int> death_saving_throws; // <success, failure>
     std::vector<const Effect*> effects;
+    bool damange_resistances[14];
 
     // SPELLCASTING
     int spell_ability_modifier;
