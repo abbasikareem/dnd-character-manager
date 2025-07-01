@@ -7,6 +7,7 @@
 #include <fstream>
 #include <cassert>
 #include <set>
+#include <map>
 
 #include "background.hpp"
 #include "character_class.hpp"
@@ -24,17 +25,19 @@ public:
     public:
 
     private:
-        std::vector<const Weapon*> weapons;
-        std::vector<const Armor*> armor;
+        std::set<const Weapon*> equipped_weapons;
+        std::set<const Armor*> equipped_armor;
         Currency money[5];
-        std::set<std::pair<int, const Item*>> equipment; // <quantity, Item>
-        std::set<std::pair<int, const Item*>> treasure; // <quantity, Item>
+        std::map<const Item *, int> equipment;
+        std::map<const Item *, int> treasure;
     };
 
     class Spellbook {
     public:
 
     private:
+        // true if character prepares spells, false if they just know spells
+        bool prepared_style; 
         int spell_ability_modifier;
         int spell_save_dc;
         int spell_attack_bunus;

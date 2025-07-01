@@ -13,8 +13,8 @@ struct Roll {
     int dice[6];
 };
 
-std::ostream operator<<(std::ostream &os, Roll dice);
+std::ostream & operator<<(std::ostream &os, Roll roll);
 
-std::istream operator>>(std::istream &is, Roll dice);
+std::istream & operator>>(std::istream &is, Roll & roll);
 
 #endif // DICE_HPP
