@@ -9,6 +9,41 @@
 
 class Spell {
 public:
+    Spell();
+
+    // void set_name(const std::string &name_in);
+
+    // void set_description(const std::string &description_in);
+
+    // void set_school(School school_in);
+
+    // void set_level(int level_in);
+
+    // void set_cast_time(int ntime, TimeUnit utime);
+
+    // void set_target(int ntarget, TargetUnit utarget);
+
+    // void set_range(int nrange, RangeUnit urange);
+
+    // void set_concentration(bool is_con_in);
+
+    // void set_ritual(bool is_rit_in);
+
+    // void set_duration(int nduration, TimeUnit uduration);
+
+    // void set_verbal(bool is_verbal_in);
+
+    // void set_semantic(bool is_semantic_in);
+
+    // void set_material(bool is_material_in);
+
+    // void set_roll(Roll roll_in);
+
+    // void set_damage_type(DamageType damage_type_in);
+
+    // std::ostream & cast(std::ostream &os) const;
+
+    // std::ostream & ritual_cast(std::ostream &os) const;
 
 private:
     std::string name;
@@ -26,6 +61,8 @@ private:
     bool is_material;
     Roll roll;
     DamageType damage_type;
+
+    friend std::istream & operator<<(std::istream &is, Spell spell);
 };
 
 std::ostream & operator<<(std::ostream &os, const Spell &spell);
