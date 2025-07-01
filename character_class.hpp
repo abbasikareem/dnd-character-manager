@@ -2,20 +2,13 @@
 #define CLASS_HPP
 
 #include <string>
-#include <vector>
 #include <set>
-#include <iostream>
-#include <fstream>
-#include <cassert>
 
-#include "background.hpp"
-#include "roll.hpp"
-#include "effect.hpp"
 #include "enums.hpp"
 #include "feature.hpp"
-#include "item.hpp"
-#include "race.hpp"
 #include "spell.hpp"
+#include "roll.hpp"
+#include "item.hpp"
 
 class CharacterClass {
 public:

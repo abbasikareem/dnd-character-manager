@@ -2,12 +2,10 @@
 #define RACE_HPP
 
 #include <string>
-#include <vector>
 #include <set>
-#include <iostream>
 #include <fstream>
-#include <cassert>
 
+#include "enums.hpp"
 #include "feature.hpp"
 
 class Race {

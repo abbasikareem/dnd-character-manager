@@ -1,8 +1,6 @@
 #ifndef DICE_HPP
 #define DICE_HPP
 
-#include <string>
-#include <iostream>
 #include <fstream>
 
 struct Roll {

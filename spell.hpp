@@ -2,9 +2,7 @@
 #define SPELL_HPP
 
 #include <string>
-#include <iostream>
 #include <fstream>
-#include <cassert>
 
 #include "enums.hpp"
 #include "roll.hpp"
