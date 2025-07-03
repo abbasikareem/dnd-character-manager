@@ -2,8 +2,8 @@
 #define SPELL_HPP
 
 #include <string>
-#include <fstream>
 
+#include "csvstream.hpp"
 #include "enums.hpp"
 #include "roll.hpp"
 
@@ -65,8 +65,6 @@ private:
     friend std::istream & operator<<(std::istream &is, Spell spell);
 };
 
-std::ostream & operator<<(std::ostream &os, const Spell &spell);
-
-std::istream & operator>>(std::istream &is, Spell spell);
+csvstream & operator>>(csvstream &is, Spell spell);
 
 #endif // SPELL_HPP

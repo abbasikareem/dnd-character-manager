@@ -1,7 +1,7 @@
 #ifndef DICE_HPP
 #define DICE_HPP
 
-#include <fstream>
+#include "csvstream.hpp"
 
 struct Roll {
     // The following array stores the number of each size dice (d4--d20)
@@ -11,7 +11,8 @@ struct Roll {
     int dice[6];
 };
 
-std::ostream & operator<<(std::ostream &os, Roll roll);
+
+std::ostream & operator<<(std::ostream &os, const Roll & roll);
 
 std::istream & operator>>(std::istream &is, Roll & roll);
 
