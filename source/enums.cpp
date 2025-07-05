@@ -1,4 +1,4 @@
-#include "enums.hpp"
+#include "../header/enums.hpp"
 
 std::ostream & operator<<(std::ostream &os, Ability ability) {
     static std::string labels[6] = {

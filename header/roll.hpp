@@ -1,7 +1,7 @@
 #ifndef DICE_HPP
 #define DICE_HPP
 
-#include "csvstream.hpp"
+#include "../utility/csvstream.hpp"
 
 struct Roll {
     // The following array stores the number of each size dice (d4--d20)

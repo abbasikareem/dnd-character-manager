@@ -1,4 +1,4 @@
-#include "roll.hpp"
+#include "../header/roll.hpp"
 
 bool roll_empty(const Roll & roll) {
     for (int i = 0; i < 6; ++i) {

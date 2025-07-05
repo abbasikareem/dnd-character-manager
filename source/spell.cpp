@@ -1,4 +1,4 @@
-#include "spell.hpp"
+#include "../header/spell.hpp"
 
 Spell::Spell(csvstream &is) {
     is >> *this;

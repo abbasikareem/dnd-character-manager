@@ -6,7 +6,7 @@
 #include <vector>
 #include <sstream>
 
-#include "csvstream.hpp"
+#include "../utility/csvstream.hpp"
 #include "enums.hpp"
 #include "roll.hpp"
 
