@@ -11,6 +11,7 @@ struct Roll {
     int dice[6];
 };
 
+bool roll_empty(const Roll & roll);
 
 std::ostream & operator<<(std::ostream &os, const Roll & roll);
 

@@ -1,7 +1,21 @@
 #ifndef ENUMS_HPP
 #define ENUMS_HPP
 
-// TODO: ADD INSERTION OVERLOADS FOR EACH TYPE :)
+#include <iostream>
+#include <string>
+#include <exception>
+
+class enum_exception : public std::exception {
+public:
+    enum_exception(const std::string &msg)
+        : msg(msg) {}
+
+    const char * what () const noexcept override {
+        return msg.c_str();
+    }
+private:
+    std::string msg;
+};
 
 enum Ability {
     STRENGTH = 0,
@@ -11,6 +25,11 @@ enum Ability {
     WISDOM = 4,
     CHARISMA = 5
 };
+
+std::ostream & operator<<(std::ostream &os, Ability ability);
+
+std::istream & operator>>(std::istream &is, Ability & ability);
+
 
 enum Skill {
     ACROBATICS = 0,
@@ -33,6 +52,10 @@ enum Skill {
     SURVIVAL = 17
 };
 
+std::ostream & operator<<(std::ostream &os, Skill skill);
+
+std::istream & operator>>(std::istream &is, Skill & skill);
+
 enum TimeUnit {
     INSTANTANEOUS = 0,
     ACTION = 1,
@@ -43,6 +66,10 @@ enum TimeUnit {
     HOURS = 6
 };
 
+std::ostream & operator<<(std::ostream &os, TimeUnit time_unit);
+
+std::istream & operator>>(std::istream &is, TimeUnit & time_unit);
+
 enum RangeUnit {
     TARGET = 0,
     CONE = 1,
@@ -51,6 +78,10 @@ enum RangeUnit {
     CUBE = 4,
     CYLLINDER = 5
 };
+
+std::ostream & operator<<(std::ostream &os, RangeUnit range_unit);
+
+std::istream & operator>>(std::istream &is, RangeUnit & range_unit);
 
 enum School {
     ABJURATION = 0,
@@ -63,12 +94,20 @@ enum School {
     TRANSMUTATION = 7
 };
 
+std::ostream & operator<<(std::ostream &os, School school);
+
+std::istream & operator>>(std::istream &is, School & school);
+
 enum TargetUnit {
     SELF = 0,
     TOUCH = 1,
     CREATURE = 2,
     OBJECT = 3
 };
+
+std::ostream & operator<<(std::ostream &os, TargetUnit target_unit);
+
+std::istream & operator>>(std::istream &is, TargetUnit & target_unit);
 
 enum DamageType {
     ACID = 0,
@@ -87,6 +126,10 @@ enum DamageType {
     THUNDER = 13
 };
 
+std::ostream & operator<<(std::ostream &os, DamageType damage_type);
+
+std::istream & operator>>(std::istream &is, DamageType & damage_type);
+
 enum Currency {
     COPPER = 0,
     SILVER = 1,
@@ -95,6 +138,10 @@ enum Currency {
     PLATINUM = 4
 };
 
+std::ostream & operator<<(std::ostream &os, Currency currency);
+
+std::istream & operator>>(std::istream &is, Currency & currency);
+
 enum WeaponType {
     SIMPLE_MELEE = 0,
     SIMPLE_RANGED = 1,
@@ -102,11 +149,19 @@ enum WeaponType {
     MARTIAL_RANGED = 3
 };
 
+std::ostream & operator<<(std::ostream &os, WeaponType weapon_type);
+
+std::istream & operator>>(std::istream &is, WeaponType & weapon_type);
+
 enum ArmorType {
     LIGHT = 0,
     MEDIUM = 1,
     HEAVY = 2,
     SHIELD = 3
 };
+
+std::ostream & operator<<(std::ostream &os, ArmorType armor_type);
+
+std::istream & operator>>(std::istream &is, ArmorType & armor_type);
 
 #endif // ENUMS_HPP
