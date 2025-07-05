@@ -20,7 +20,8 @@ private:
     std::string name;
     std::string description;
     School school;
-    int level; // 0 = cantrip, 1 = first level, etc.
+    bool is_cantrip;
+    int level; // if is_cantrip, this is the cantrip evolution, otherwise level
     std::pair<int, TimeUnit> cast_time; // 1 Action, 10 Minutes, etc.
     std::pair<int, TargetUnit> target; // 1 self, 1 touch, 3 creatures, etc.
     std::pair<int, RangeUnit> range; // 30 foot cone, 15 foot line, etc.

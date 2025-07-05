@@ -1,12 +1,10 @@
-#include "roll.hpp"
 #include <iostream>
 #include <sstream>
 
-using namespace std;
+#include "spell.hpp"
 
 int main() {
-    Roll r;
-    stringstream ss("1 2 0 0 3 4");
-    ss >> r;
-    cout << r;
+    csvstream csv("random_test.csv");
+    Spell s(csv);
+    std::cout << s;
 }

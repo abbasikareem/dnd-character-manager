@@ -1,0 +1,8 @@
+Fire Bolt
+Evocation Cantrip
+(V) (S) 
+You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn’t being worn or carried.Cast time: 1 Action
+Target: 1 Creature
+Range: 120 Feet
+Duration: Instantaneous
+Roll: 1d10 Fire
