@@ -9,11 +9,12 @@
 
 class Item {
 public:
+    Item(csvstream &csv);
 
 private:
     std::string name;
     std::string description;
-    std::pair<int, Currency> cost; // {2, 3} = 2 gp, see enums.hpp
+    std::pair<int, Currency> cost;
     int weight; // pounds/lbs
     bool is_magic;
 };
@@ -58,20 +59,20 @@ private:
     int carrying_capacity; // lbs
 };
 
-std::ostream & operator<<(std::ostream &os, Item item);
+std::ostream & operator<<(std::ostream &os, const Item & item);
 
-std::istream & operator>>(std::istream &is, Item item);
+std::istream & operator>>(std::istream &is, Item & item);
 
-std::ostream & operator<<(std::ostream &os, Armor armor);
+std::ostream & operator<<(std::ostream &os, const Armor & armor);
 
-std::istream & operator>>(std::istream &is, Armor armor);
+std::istream & operator>>(std::istream &is, Armor & armor);
 
-std::ostream & operator<<(std::ostream &os, Weapon weapon);
+std::ostream & operator<<(std::ostream &os, const Weapon & weapon);
 
-std::istream & operator>>(std::istream &is, Weapon weapon);
+std::istream & operator>>(std::istream &is, Weapon & weapon);
 
-std::ostream & operator<<(std::ostream &os, Mount mount);
+std::ostream & operator<<(std::ostream &os, const Mount & mount);
 
-std::istream & operator>>(std::istream &is, Mount mount);
+std::istream & operator>>(std::istream &is, Mount & mount);
 
 #endif // ITEM_HPP

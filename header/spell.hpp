@@ -14,7 +14,7 @@ class Spell {
 public:
     Spell(csvstream &is);
 
-    std::ostream & print(std::ostream &os);
+    std::ostream & print(std::ostream &os) const;
 
 private:
     std::string name;
@@ -34,11 +34,11 @@ private:
     Roll roll;
     DamageType damage_type;
 
-    friend csvstream & operator>>(csvstream &is, Spell &spell);
+    friend csvstream & operator>>(csvstream &is, Spell & spell);
 };
 
-std::ostream & operator<<(std::ostream &os, Spell &spell);
+std::ostream & operator<<(std::ostream &os, const Spell & spell);
 
-csvstream & operator>>(csvstream &is, Spell &spell);
+csvstream & operator>>(csvstream &is, Spell & spell);
 
 #endif // SPELL_HPP

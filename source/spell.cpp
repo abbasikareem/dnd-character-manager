@@ -4,7 +4,7 @@ Spell::Spell(csvstream &is) {
     is >> *this;
 }
 
-std::ostream & Spell::print(std::ostream &os) {
+std::ostream & Spell::print(std::ostream &os) const {
     os << name << "\n";
     if (is_cantrip) {
         os << school << " Cantrip\n";
@@ -62,18 +62,18 @@ std::ostream & Spell::print(std::ostream &os) {
         os << "Duration: " << duration.first << " " << duration.second << "s\n";
     }
 
-    if (!roll_empty(roll)) {
+    if (!roll.is_empty()) {
         os << "Roll: " << roll << damage_type << "\n";
     }
 
     return os;
 }
 
-std::ostream & operator<<(std::ostream &os, Spell &spell) {
+std::ostream & operator<<(std::ostream &os, const Spell & spell) {
     return spell.print(os); 
 }
 
-csvstream & operator>>(csvstream &is, Spell &spell) {
+csvstream & operator>>(csvstream &is, Spell & spell) {
     std::map<std::string, std::string> line;
     is >> line;
 
