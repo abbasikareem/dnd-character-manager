@@ -9,6 +9,8 @@
 
 class Item {
 public:
+    Item();
+
     Item(csvstream &csv);
 
 private:
@@ -17,10 +19,15 @@ private:
     std::pair<int, Currency> cost;
     int weight; // pounds/lbs
     bool is_magic;
+
+    friend csvstream & operator>>(csvstream &csv, Item & item);
 };
 
 class Weapon : public Item {
 public:
+    Weapon();
+
+    Weapon(csvstream &csv);
 
 private:
     WeaponType weapon_type;
@@ -36,10 +43,15 @@ private:
     bool is_ammunition;
     bool is_loading;
     bool is_reach;
+
+    friend std::ostream & operator<<(std::ostream &os, const Weapon & weapon);
 };
 
 class Armor : public Item {
 public:
+    Armor();
+
+    Armor(csvstream &csv);
 
 private:
     ArmorType armor_type;
@@ -47,32 +59,39 @@ private:
     std::pair<Ability, int> ac_modifier;
     int min_strength;
     bool stealth_disadvantage;
+    
+    friend csvstream & operator>>(csvstream &csv, Armor & armor);
 };
 
 class Mount : public Item {
 public:
+    Mount();
+
+    Mount(csvstream &csv);
 
 private:
     Armor *barding; // armor for animals
     int combat_speed; // feet
     int travel_speed; // miles per hour
     int carrying_capacity; // lbs
+
+    friend csvstream & operator>>(csvstream &csv, Mount & mount);
 };
 
 std::ostream & operator<<(std::ostream &os, const Item & item);
 
-std::istream & operator>>(std::istream &is, Item & item);
-
-std::ostream & operator<<(std::ostream &os, const Armor & armor);
-
-std::istream & operator>>(std::istream &is, Armor & armor);
+csvstream & operator>>(csvstream &csv, Item & item);
 
 std::ostream & operator<<(std::ostream &os, const Weapon & weapon);
 
-std::istream & operator>>(std::istream &is, Weapon & weapon);
+csvstream & operator>>(csvstream &csv, Weapon & weapon);
+
+std::ostream & operator<<(std::ostream &os, const Armor & armor);
+
+csvstream & operator>>(csvstream &csv, Armor & armor);
 
 std::ostream & operator<<(std::ostream &os, const Mount & mount);
 
-std::istream & operator>>(std::istream &is, Mount & mount);
+csvstream & operator>>(csvstream &csv, Mount & mount);
 
 #endif // ITEM_HPP

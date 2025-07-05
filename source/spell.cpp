@@ -4,73 +4,69 @@ Spell::Spell(csvstream &is) {
     is >> *this;
 }
 
-std::ostream & Spell::print(std::ostream &os) const {
-    os << name << "\n";
-    if (is_cantrip) {
-        os << school << " Cantrip\n";
+std::ostream & operator<<(std::ostream &os, const Spell & spell) {
+    os << spell.name << "\n";
+    if (spell.is_cantrip) {
+        os << spell.school << " Cantrip\n";
     }
     else {
-        os << "Level " << level << " " << school << "\n";
+        os << "Level " << spell.level << " " << spell.school << "\n";
     }
 
-    if (is_concentration) {
+    if (spell.is_concentration) {
         os << "(C) ";
     }
-    if (has_ritual) {
+    if (spell.has_ritual) {
         os << "(R) ";
     }
-    if (is_verbal) {
+    if (spell.is_verbal) {
         os << "(V) ";
     }
-    if (is_semantic) {
+    if (spell.is_semantic) {
         os << "(S) ";
     }
-    if (is_material) {
+    if (spell.is_material) {
         os << "(M) ";
     }
     os << "\n";
 
-    os << description;
-    os << "Cast time: " << cast_time.first << " " << cast_time.second << "\n";
+    os << spell.description;
+    os << "Cast time: " << spell.cast_time.first << " " << spell.cast_time.second << "\n";
     
-    if (target.second == SELF || target.second == TOUCH) {
-        os << "Target: " << target.second;
+    if (spell.target.second == SELF || spell.target.second == TOUCH) {
+        os << "Target: " << spell.target.second;
     }
     else {
-        if (target.first == 1) {
-            os << "Target: " << target.first << " " << target.second << "\n";
+        if (spell.target.first == 1) {
+            os << "Target: " << spell.target.first << " " << spell.target.second << "\n";
         }
         else {
-            os << "Target: " << target.first << " " << target.second << "s\n";
+            os << "Target: " << spell.target.first << " " << spell.target.second << "s\n";
         }
 
-        if (range.second == TARGET) {
-            os << "Range: " << range.first << " Feet\n";
+        if (spell.range.second == TARGET) {
+            os << "Range: " << spell.range.first << " Feet\n";
         }
         else{
-            os << "Range: " << range.first << " Foot " << range.second << "\n";
+            os << "Range: " << spell.range.first << " Foot " << spell.range.second << "\n";
         }
     }
     
-    if (duration.second == INSTANTANEOUS) {
-        os << "Duration: " << duration.second << "\n";
+    if (spell.duration.second == INSTANTANEOUS) {
+        os << "Duration: " << spell.duration.second << "\n";
     }
-    else if (duration.first == 1) {
-        os << "Duration: " << duration.first << " " << duration.second << "\n";
+    else if (spell.duration.first == 1) {
+        os << "Duration: " << spell.duration.first << " " << spell.duration.second << "\n";
     }
     else {
-        os << "Duration: " << duration.first << " " << duration.second << "s\n";
+        os << "Duration: " << spell.duration.first << " " << spell.duration.second << "s\n";
     }
 
-    if (!roll.is_empty()) {
-        os << "Roll: " << roll << damage_type << "\n";
+    if (!spell.roll.is_empty()) {
+        os << "Roll: " << spell.roll << spell.damage_type << "\n";
     }
 
-    return os;
-}
-
-std::ostream & operator<<(std::ostream &os, const Spell & spell) {
-    return spell.print(os); 
+    return os; 
 }
 
 csvstream & operator>>(csvstream &is, Spell & spell) {
