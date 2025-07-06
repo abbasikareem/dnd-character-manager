@@ -76,40 +76,40 @@ csvstream & operator>>(csvstream &is, Spell & spell) {
     spell.name = line["name"];
     spell.description = line["description"];
     
-    std::istringstream is_school(line["school"]);
-    is_school >> spell.school;
+    {std::istringstream iss(line["school"]);
+    iss >> spell.school;}
 
     spell.is_cantrip = stoi(line["cantrip"]);
     spell.level = stoi(line["level"]);
 
     spell.cast_time.first = stoi(line["cast_time_number"]);
-    std::istringstream is_spell(line["cast_time_unit"]);
-    is_spell >> spell.cast_time.second;
+    {std::istringstream iss(line["cast_time_unit"]);
+    iss >> spell.cast_time.second;}
 
     spell.target.first = stoi(line["target_number"]);
-    std::istringstream is_target(line["target_unit"]);
-    is_target >> spell.target.second;
+    {std::istringstream iss(line["target_unit"]);
+    iss >> spell.target.second;}
 
     spell.range.first = stoi(line["range_number"]);
-    std::istringstream is_range(line["range_unit"]);
-    is_range >> spell.range.second;
+    {std::istringstream iss(line["range_unit"]);
+    iss >> spell.range.second;}
 
     spell.is_concentration = stoi(line["concentration"]);
     spell.has_ritual = stoi(line["ritual"]);
 
     spell.duration.first = stoi(line["duration_number"]);
-    std::istringstream is_duration(line["duration_unit"]);
-    is_duration >> spell.duration.second;
+    {std::istringstream iss(line["duration_unit"]);
+    iss >> spell.duration.second;}
 
     spell.is_verbal = stoi(line["verbal"]);
     spell.is_semantic = stoi(line["semantic"]);
     spell.is_material = stoi(line["material"]);
 
-    std::istringstream is_roll(line["roll"]);
-    is_roll >> spell.roll;
+    {std::istringstream iss(line["roll"]);
+    iss >> spell.roll;}
 
-    std::istringstream is_damage_type(line["damage_type"]);
-    is_damage_type >> spell.damage_type;
+    {std::istringstream iss(line["damage_type"]);
+    iss >> spell.damage_type;}
 
     return is;
 }

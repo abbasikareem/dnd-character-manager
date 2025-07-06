@@ -13,14 +13,20 @@ public:
 
     Item(csvstream &csv);
 
+    virtual std::ostream & blurb(std::ostream &os) const;
+
+    virtual std::ostream & print(std::ostream &os) const;
+
 private:
     std::string name;
     std::string description;
-    std::pair<int, Currency> cost;
     int weight; // pounds/lbs
     bool is_magic;
 
     friend csvstream & operator>>(csvstream &csv, Item & item);
+    friend csvstream & operator>>(csvstream &csv, Weapon & weapon);
+    friend csvstream & operator>>(csvstream &csv, Armor & armor);
+    friend csvstream & operator>>(csvstream &csv, Mount & mount);
 };
 
 class Weapon : public Item {
@@ -28,6 +34,10 @@ public:
     Weapon();
 
     Weapon(csvstream &csv);
+
+    std::ostream & blurb(std::ostream &os) const override;
+
+    std::ostream & print(std::ostream &os) const override;
 
 private:
     WeaponType weapon_type;
@@ -44,7 +54,7 @@ private:
     bool is_loading;
     bool is_reach;
 
-    friend std::ostream & operator<<(std::ostream &os, const Weapon & weapon);
+    friend csvstream & operator>>(csvstream &csv, Weapon & weapon);
 };
 
 class Armor : public Item {
@@ -52,6 +62,10 @@ public:
     Armor();
 
     Armor(csvstream &csv);
+
+    std::ostream & blurb(std::ostream &os) const override;
+
+    std::ostream & print(std::ostream &os) const override;
 
 private:
     ArmorType armor_type;
@@ -69,6 +83,10 @@ public:
 
     Mount(csvstream &csv);
 
+    std::ostream & blurb(std::ostream &os) const override;
+
+    std::ostream & print(std::ostream &os) const override;
+
 private:
     Armor *barding; // armor for animals
     int combat_speed; // feet
@@ -82,15 +100,9 @@ std::ostream & operator<<(std::ostream &os, const Item & item);
 
 csvstream & operator>>(csvstream &csv, Item & item);
 
-std::ostream & operator<<(std::ostream &os, const Weapon & weapon);
-
 csvstream & operator>>(csvstream &csv, Weapon & weapon);
 
-std::ostream & operator<<(std::ostream &os, const Armor & armor);
-
 csvstream & operator>>(csvstream &csv, Armor & armor);
-
-std::ostream & operator<<(std::ostream &os, const Mount & mount);
 
 csvstream & operator>>(csvstream &csv, Mount & mount);
 
